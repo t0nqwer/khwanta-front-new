@@ -11,41 +11,43 @@ body {
 @tailwind utilities;
 
 @layer components {
+  .box {
+    box-shadow: 0px 3px 20px #0000000b;
+    @apply bg-white border-transparent rounded-md relative dark:bg-darkmode-600 dark:border-transparent;
+  }
+}
+/* @layer components {
   .pagination {
     display: flex;
     margin-right: auto;
-    }
-  .pagination.page-item.active.page-link {
-      @apply box font-medium dark:bg-darkmode-400;
     
-    .page-link {
-      min-width: 40px;
-      @apply btn shadow-none font-normal flex items-center justify-center border-transparent text-slate-800 mr-2 dark:text-slate-300;
-    }
   }
 }
-@import "@left4code/tw-starter/dist/css/_breadcrumb.css";
-@import "@left4code/tw-starter/dist/css/_accordion.css";
-@import "@left4code/tw-starter/dist/css/_alert.css";
-@import "@left4code/tw-starter/dist/css/_btn.css";
-@import "@left4code/tw-starter/dist/css/_dropdown.css";
-@import "@left4code/tw-starter/dist/css/_file.css";
-@import "@left4code/tw-starter/dist/css/_form-reset.css";
-@import "@left4code/tw-starter/dist/css/_form-check.css";
-@import "@left4code/tw-starter/dist/css/_form-control.css";
-@import "@left4code/tw-starter/dist/css/_form-help.css";
-@import "@left4code/tw-starter/dist/css/_form-inline.css";
-@import "@left4code/tw-starter/dist/css/_form-label.css";
-@import "@left4code/tw-starter/dist/css/_form-select.css";
-@import "@left4code/tw-starter/dist/css/_image-fit.css";
-@import "@left4code/tw-starter/dist/css/_input-group.css";
-@import "@left4code/tw-starter/dist/css/_intro.css";
-@import "@left4code/tw-starter/dist/css/_modal.css";
-@import "@left4code/tw-starter/dist/css/_pagination.css";
-@import "@left4code/tw-starter/dist/css/_progress.css";
-@import "@left4code/tw-starter/dist/css/_scrollbar.css";
-@import "@left4code/tw-starter/dist/css/_tab.css";
-@import "@left4code/tw-starter/dist/css/_table.css";
-@import "@left4code/tw-starter/dist/css/_typing-dots.css";
-@import "@left4code/tw-starter/dist/css/_zoom-in.css";
-@import "@left4code/tw-starter/dist/css/_box.css";
+@layer components {
+  .page-item.active .page-link {
+    font-weight: 500;
+    @apply box
+    }
+    .page-link {
+      min-width: 40px;
+      font-weight: 400;
+      @apply  shadow-none font-normal flex items-center justify-center border-transparent text-slate-800 mr-2 dark:text-slate-300;
+    }
+  } */
+  /* @layer components {
+    .pagination {
+      @apply flex mr-auto
+      .page-item {
+        &.active .page-link {
+          @apply box font-medium dark:bg-darkmode-400;
+        }
+        .page-link {
+          min-width: 40px;
+          @apply btn shadow-none font-normal flex items-center justify-center border-transparent text-slate-800 mr-2 dark:text-slate-300;
+        }
+      }
+    }
+  } */
+
+
+

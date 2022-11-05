@@ -25,12 +25,8 @@ const ProductCard = ({
   return (
     <div className="bg-white border-transparent rounded-md relative dark:bg-darkmode-600 dark:border-transparent shadow-lg ">
       <div className="p-5">
-        <div className=" h-128 2xl:h-96 relative rounded-md overflow-hidden ">
-          <img
-            alt="Midone - HTML Admin Template"
-            className="rounded-md absolute object-cover w-full h-full"
-            src={img}
-          />
+        <div className=" h-96 2xl:h-96 relative rounded-md overflow-visible ">
+          <img className="rounded-md absolute object-cover w-full h-full" src={img} />
           <div className="absolute w-full bottom-0 text-white px-5 pb-4  z-10 bg-gradient-to-t from-zinc-700 to-transparent/0">
             <a href="" className="block font-medium pt-4 text-xl ">
               {pictag1}

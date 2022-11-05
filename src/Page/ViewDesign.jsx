@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { Paginataion, ProductCard } from "../Components";
+import { Pagination, ProductCard } from "../Components";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { GetviewDesign } from "../Action/product";
 
 const ViewDesign = () => {
-  const { Design} = useSelector((state) => state.product);
+  const { Design, page } = useSelector((state) => state.product);
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -19,7 +19,6 @@ const ViewDesign = () => {
   //<============================State============================>
   const [deleteConfirmationModal, setDeleteConfirmationModal] = useState(false);
   const navito = "/ViewDesign";
-  const page = 8
 
   //<============================Function============================>
   const DeleteConfirmation = (e) => {
@@ -48,7 +47,7 @@ const ViewDesign = () => {
           </div>
         ))}
       </div>
-      <Paginataion limit={page} Navito={navito} pagee={pagee} />
+      <Pagination limit={page} Navito={navito} pagee={pagee} />
     </div>
   );
 };
