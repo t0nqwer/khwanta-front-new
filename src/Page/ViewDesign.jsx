@@ -29,7 +29,7 @@ const ViewDesign = () => {
       <h2 className=" text-lg font-medium mt-10">แบบเสื้อผ้า</h2>
       <div className="grid grid-cols-12 gap-6 mt-5">
         {Design.map((Design) => (
-          <div className="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3">
+          <div key={Design?.code} className="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3">
             <ProductCard
               product={Design}
               deleteConfirmationModal={DeleteConfirmation}

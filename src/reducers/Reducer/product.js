@@ -6,9 +6,22 @@ import {
   GETDESIGNCODE,
   ADD_KHWANTA_PRODUCT,
   GET_VIEW_DESIGN,
+  GET_ADD_IMPORT,
 } from "../../constants/actionTypes";
 
-export default (state = { isLoading: true, Prodata: [], Design: [], Fabric: [], page: [], Prodata2: [] }, action) => {
+export default (
+  state = {
+    isLoading: true,
+    Prodata: [],
+    Design: [],
+    Fabric: [],
+    page: [],
+    Prodata2: [],
+    Brand: [],
+    Category: [],
+  },
+  action
+) => {
   switch (action.type) {
     case START_LOADING:
       return { ...state, isLoading: true };
@@ -19,9 +32,21 @@ export default (state = { isLoading: true, Prodata: [], Design: [], Fabric: [], 
     case GETPRODUCTBYSEARCH:
       return action.payload;
     case GETDESIGNCODE:
-      return { ...state, Design: action.payload[0], Fabric: action.payload[1], Prodata: action.payload[2] };
+      return {
+        ...state,
+        Design: action.payload[0],
+        Fabric: action.payload[1],
+        Prodata: action.payload[2],
+      };
     case GET_VIEW_DESIGN:
       return { ...state, Design: action.payload[0], page: action.payload[1] };
+    case GET_ADD_IMPORT:
+      return {
+        ...state,
+        Prodata: action.payload[0],
+        Brand: action.payload[1],
+        Category: action.payload[2],
+      };
     default:
       return state;
   }

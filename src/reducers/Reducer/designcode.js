@@ -18,7 +18,6 @@ export default (
     case END_LOADING:
       return { ...state, isLoading: false };
     case GET_ADD_DESIGN:
-      console.log(action.payload);
       return {
         ...state,
         brand: action.payload[0],

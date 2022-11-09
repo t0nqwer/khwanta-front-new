@@ -1,27 +1,24 @@
 import { START_LOADING, END_LOADING, GETFABRICTYPE } from "../../constants/actionTypes";
 
-export default (fabrictype = [[], [], [], [], { isLoading: true }], action) => {
+export default (
+  state = { weaving: [], fabricType: [], colorTechnique: [], pattern: [], isLoading: true },
+  action
+) => {
   switch (action.type) {
     case START_LOADING:
-      const newARR = fabrictype.map((obj) => {
-        if (obj.isLoading === false) {
-          return { ...obj, isLoading: true };
-        }
-        return obj;
-      });
-      return newARR;
+      return { ...state, isLoading: true };
     case END_LOADING:
-      const newARR2 = fabrictype.map((obj) => {
-        if (obj.isLoading === true) {
-          return { ...obj, isLoading: false };
-        }
-        return obj;
-      });
-      return newARR2;
+      return { ...state, isLoading: false };
     case GETFABRICTYPE:
-      return [action.payload[0], action.payload[1], action.payload[2], action.payload[3], { isLoading: false }];
+      return {
+        weaving: action.payload[0],
+        fabricType: action.payload[1],
+        colorTechnique: action.payload[2],
+        pattern: action.payload[3],
+        isLoading: false,
+      };
 
     default:
-      return fabrictype;
+      return state;
   }
 };

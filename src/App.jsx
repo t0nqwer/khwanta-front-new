@@ -7,9 +7,12 @@ import { Navbar, Sidebar, ThemeChanger } from "./Components";
 import { useStateContext } from "./Context/ContextProvider";
 import {
   AddDesign,
+  AddFabric,
+  AddFabricPattern,
   AddImport,
   AddKhwanta,
   AddKhwantaCloth,
+  AddSupplier,
   Dashboard,
   PrintBarcode,
   SingleDesign,
@@ -17,7 +20,9 @@ import {
   ViewDesign,
   ViewProduct,
 } from "./Page";
-
+import { ReactNotifications } from "react-notifications-component";
+import "animate.css";
+import "react-notifications-component/dist/theme.css";
 // import Router from "./router";
 
 function App() {
@@ -27,7 +32,8 @@ function App() {
   return (
     <BrowserRouter>
       <div className="flex relative dark:bg-main-dark-bg">
-          <ThemeChanger />
+        <ReactNotifications />
+        <ThemeChanger />
         {activeMenu ? (
           <div className="w-72 z-50 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
             <Sidebar />
@@ -61,6 +67,9 @@ function App() {
               <Route path="/PrintBarcode" element={<PrintBarcode />} />
               <Route path="/ViewDesign/:id" element={<SingleDesign />} />
               <Route path="/ViewProduct/:id" element={<SingleProduct />} />
+              <Route path="/AddFabric" element={<AddFabric />} />
+              <Route path="/AddSupplier" element={<AddSupplier />} />
+              <Route path="/AddFabricPattern" element={<AddFabricPattern />} />
             </Routes>
           </div>
         </div>

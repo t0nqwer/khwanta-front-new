@@ -1,13 +1,10 @@
 import {
-  ADDPRODUCT,
   GETPRODUCT,
   GETSINGLEPRODUCT,
   GETPRODUCTBYSEARCH,
-  ADDDESIGN,
   START_LOADING,
   END_LOADING,
   GETDESIGNCODE,
-  ADD_KHWANTA_PRODUCT,
   GET_VIEW_DESIGN,
   GET_SINGLE_DESIGN,
   DEL_PRODUCT,
@@ -16,6 +13,8 @@ import {
   GETTYPE,
   GET_PRODUCT_CATEGORY,
   GET_ADD_DESIGN,
+  GETFABRICTYPE,
+  GET_ADD_IMPORT,
 } from "../constants/actionTypes";
 
 import {
@@ -26,6 +25,10 @@ import {
   getSizeDe,
   getType,
   getViewDesign,
+  getProduct,
+  Delproduct,
+  getFabricType,
+  getAddImport,
 } from "../Api";
 
 export const GetDesignCode = (product) => async (dispatch) => {
@@ -97,5 +100,45 @@ export const GetviewDesign = (page) => async (dispatch) => {
     dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error.message);
+  }
+};
+
+export const GetProduct = (page) => async (dispatch) => {
+  try {
+    const { data } = await getProduct(page);
+
+    dispatch({ type: GETPRODUCT, payload: data });
+    dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const DelProduct = (id) => async (dispatch) => {
+  try {
+    const { data } = await Delproduct(id);
+    dispatch({ type: DEL_PRODUCT, payload: data });
+  } catch (error) {}
+};
+
+export const GetFabricType = () => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+    const { data } = await getFabricType();
+    dispatch({ type: GETFABRICTYPE, payload: data });
+    dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const GetAddImport = () => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+    const { data } = await getAddImport();
+    dispatch({ type: GET_ADD_IMPORT, payload: data });
+    dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log(error);
   }
 };

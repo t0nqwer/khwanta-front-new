@@ -1,6 +1,6 @@
 import { AiOutlineBarcode, AiOutlineUnorderedList } from "react-icons/ai";
 
-import { GiClothes } from "react-icons/gi";
+import { GiClothes, GiRolledCloth } from "react-icons/gi";
 import {
   MdDashboard,
   MdOutlineImportExport,
@@ -8,6 +8,7 @@ import {
   MdPlaylistAdd,
   MdOutlineDesignServices,
 } from "react-icons/md";
+// import { CiDeliveryTruck } from "react-icons/ci";
 
 // const sideMenu = atom({
 //   key: "sideMenu",
@@ -104,6 +105,26 @@ export const links = [
         name: "เพิ่มสินค้ารับซื้อ",
         icon: <MdOutlineImportExport />,
         pathname: "AddImport",
+      },
+      {
+        name: "เพิ่มผู้ส่งสินค้า",
+        icon: <MdOutlineImportExport />,
+        pathname: "AddSupplier",
+      },
+    ],
+  },
+  {
+    title: "ผ้า",
+    links: [
+      {
+        name: "เพิ่มผ้า",
+        icon: <GiRolledCloth />,
+        pathname: "AddFabric",
+      },
+      {
+        name: "เพิ่มลายผ้า",
+        icon: <GiRolledCloth />,
+        pathname: "AddFabricPattern",
       },
     ],
   },

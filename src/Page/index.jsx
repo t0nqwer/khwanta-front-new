@@ -8,3 +8,6 @@ export { default as Dashboard } from "./Dashboard";
 export { default as PrintBarcode } from "./PrintBarcode";
 export { default as SingleProduct } from "./SingleProduct";
 export { default as SingleDesign } from "./SingleDesign";
+export { default as AddFabric } from "./AddFabric";
+export { default as AddSupplier } from "./AddSupplier";
+export { default as AddFabricPattern } from "./AddFabricPattern";

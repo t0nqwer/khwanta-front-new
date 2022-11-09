@@ -6,3 +6,6 @@ export { default as UploadImg } from "./UploadImg/UploadImg";
 export { default as DesignInfo } from "./DesignInfo";
 export { default as Size } from "./Size/Size";
 export { default as ProductCard } from "./ProductCard";
+export { default as Datalist } from "./Datalist";
+export { default as DataPrint } from "./DataPrint";
+export { default as Loading } from "./loading";

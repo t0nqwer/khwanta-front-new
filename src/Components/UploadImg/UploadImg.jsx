@@ -27,7 +27,7 @@ const UploadImg = (props) => {
 
   return (
     <>
-      <div className="intro-y box p-5  mt-5">
+      <div className="intro-y box p-5">
         <div className="border border-gray-300 dark:border-darkmode-400 rounded-md px-5">
           <div className="grid gap-5 md:grid-cols-4 ">
             <div className="col-span-2">
@@ -87,8 +87,8 @@ const UploadImg = (props) => {
                 </div>
               </div>
             </div>
-            <div className="w-full mt-3 xl:mt-0 flex-1 border-2 border-dashed dark:border-darkmode-400 rounded-md pt-4">
-              <UploadDetail DelImg={delImg} onSaveImageDetail={saveImageDetail} />
+            <div className="w-full mt-3 mb-5 xl:mt-0 flex-1 border-2 border-dashed dark:border-darkmode-400 rounded-md pt-4">
+              <UploadDetail DelImg={delImg}  onSaveImageDetail={saveImageDetail} />
             </div>
           </div>
         </div>

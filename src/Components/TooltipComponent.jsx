@@ -8,7 +8,7 @@ const TooltipComponent = ({ title, customFunc, icon, color, dotColor }) => {
         type="button"
         onClick={() => customFunc()}
         style={{ color }}
-        className="relative text-xl rounded-full p-3 hover:bg-gray-600"
+        className="relative shadow-none  text-xl rounded-full p-3 hover:bg-gray-600"
       >
         <span
           style={{ background: dotColor }}
