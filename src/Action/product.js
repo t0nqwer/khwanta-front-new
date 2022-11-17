@@ -29,6 +29,8 @@ import {
   Delproduct,
   getFabricType,
   getAddImport,
+  getSingleDesign,
+  getSingleProduct,
 } from "../Api";
 
 export const GetDesignCode = (product) => async (dispatch) => {
@@ -114,12 +116,7 @@ export const GetProduct = (page) => async (dispatch) => {
   }
 };
 
-export const DelProduct = (id) => async (dispatch) => {
-  try {
-    const { data } = await Delproduct(id);
-    dispatch({ type: DEL_PRODUCT, payload: data });
-  } catch (error) {}
-};
+
 
 export const GetFabricType = () => async (dispatch) => {
   try {
@@ -141,4 +138,33 @@ export const GetAddImport = () => async (dispatch) => {
   } catch (error) {
     console.log(error);
   }
+};
+export const GetSingleProduct = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+    const { data } = await getSingleProduct(id);
+    dispatch({ type: GET_SINGLE_DESIGN, payload: data });
+    dispatch({ type: END_LOADING });
+  } catch (error) {}
+};
+
+export const GetSingleDesign = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+    const { data } = await getSingleDesign(id);
+    console.log(data);
+    dispatch({ type: GET_SINGLE_DESIGN, payload: data });
+    dispatch({ type: END_LOADING });
+  } catch (error) {}
+};
+
+
+
+export const DelProduct = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+    const { data } = await Delproduct(id);
+    dispatch({ type: DEL_PRODUCT, payload: data });
+    dispatch({ type: END_LOADING });
+  } catch (error) {}
 };

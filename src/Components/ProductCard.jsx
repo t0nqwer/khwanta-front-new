@@ -50,9 +50,6 @@ const ProductCard = ({
         <a className="flex items-center text-primary mr-auto" onClick={openPost} href="#">
           ดูรายละเอียดสินค้า
         </a>
-        <a className="flex items-center text-danger" onClick={confirmDel} href="#">
-          Delete
-        </a>
       </div>
     </div>
   );

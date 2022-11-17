@@ -11,3 +11,4 @@ export { default as SingleDesign } from "./SingleDesign";
 export { default as AddFabric } from "./AddFabric";
 export { default as AddSupplier } from "./AddSupplier";
 export { default as AddFabricPattern } from "./AddFabricPattern";
+export { default as Login } from "./Login";

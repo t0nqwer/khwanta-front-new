@@ -9,3 +9,5 @@ export { default as ProductCard } from "./ProductCard";
 export { default as Datalist } from "./Datalist";
 export { default as DataPrint } from "./DataPrint";
 export { default as Loading } from "./loading";
+export { default as DesignSingle } from "./Design/designSingle";
+export { default as Modal } from "./Modal";
