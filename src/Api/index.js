@@ -27,7 +27,6 @@ export const Delproduct = (id) => axios.delete(`${url}/delproducts/${id}`);
 export const getAddDesign = () => axios.get(`${url}/getadddesign`);
 export const getAddImport = () => axios.get(`${url}/getaddimport`);
 
-
 //<==================================== post =======================================>
 export const addFabricPattern = (newPattern) => axios.post(`${url}/addfabricpattern`, newPattern);
 export const addType = (newType) => axios.post(`${url}/addtype`, newType);
@@ -37,3 +36,6 @@ export const addDesign = (newDesign) => axios.post(`${url}/adddesign`, newDesign
 export const addKhwantaProduct = (newdata) => axios.post(`${url}/addKhwantaProduct`, newdata);
 export const addSupplier = (data) => axios.post(`${url}/addsupplier`, data);
 export const addImport = (data) => axios.post(`${url}/addimport`, data);
+
+//<====================================  =======================================>
+export const logUserIn = (data) => axios.post(`${url}/addlogin`, data);

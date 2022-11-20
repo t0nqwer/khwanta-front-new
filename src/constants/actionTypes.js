@@ -25,6 +25,7 @@ export const GET_SINGLE_DESIGN = "GET_SINGLE_DESIGN";
 export const GET_STOCK_BARCODE = "GET_STOCK_BARCODE";
 export const GET_ADD_DESIGN = "GET_ADD_DESIGN";
 export const GET_ADD_IMPORT = "GET_ADD_IMPORT";
+export const LOG_IN = "LOG_IN";
 
 export const DEL_PRODUCT = "DEL_PRODUCT";
 

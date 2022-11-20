@@ -14,6 +14,7 @@ import {
   AddKhwantaCloth,
   AddSupplier,
   Dashboard,
+  Login,
   PrintBarcode,
   SingleDesign,
   SingleProduct,
@@ -70,6 +71,7 @@ function App() {
               <Route path="/AddFabric" element={<AddFabric />} />
               <Route path="/AddSupplier" element={<AddSupplier />} />
               <Route path="/AddFabricPattern" element={<AddFabricPattern />} />
+              <Route path="/Login" element={<Login />} />
             </Routes>
           </div>
         </div>
