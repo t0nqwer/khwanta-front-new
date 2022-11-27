@@ -7,6 +7,7 @@ import {
   ADD_KHWANTA_PRODUCT,
   GET_VIEW_DESIGN,
   GET_ADD_IMPORT,
+  EDIT_DESIGN_SIZE,
 } from "../../constants/actionTypes";
 
 export default (
@@ -47,6 +48,8 @@ export default (
         Brand: action.payload[1],
         Category: action.payload[2],
       };
+    case EDIT_DESIGN_SIZE:
+      return { ...state, sta: action.payload };
     default:
       return state;
   }

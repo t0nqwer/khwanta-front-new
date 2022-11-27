@@ -3,10 +3,16 @@ import {
   GET_SINGLE_DESIGN,
   START_LOADING,
   END_LOADING,
+  EDIT_DESIGN_SIZE,
 } from "../../constants/actionTypes";
 
 export default (
-  singleproduct = { isLoading: true, Data: { product_detail_img: [], Front_img: [] }, Sizede: [] },
+  singleproduct = {
+    isLoading: true,
+    Data: { product_detail_img: [], Front_img: [] },
+    Sizede: [],
+    Sta: "",
+  },
   action
 ) => {
   switch (action.type) {
@@ -18,6 +24,9 @@ export default (
       return { ...singleproduct, Data: action.payload[0], Sizede: action.payload[1] };
     case GET_SINGLE_DESIGN:
       return { ...singleproduct, Data: action.payload[0], Sizede: action.payload[1] };
+    case EDIT_DESIGN_SIZE:
+      console.log(action.payload);
+      return { ...singleproduct, Sta: action.payload };
     default:
       return singleproduct;
   }

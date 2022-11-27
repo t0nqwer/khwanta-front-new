@@ -16,6 +16,7 @@ import {
   Dashboard,
   Login,
   PrintBarcode,
+  Signup,
   SingleDesign,
   SingleProduct,
   ViewDesign,
@@ -72,6 +73,7 @@ function App() {
               <Route path="/AddSupplier" element={<AddSupplier />} />
               <Route path="/AddFabricPattern" element={<AddFabricPattern />} />
               <Route path="/Login" element={<Login />} />
+              <Route path="/Signup" element={<Signup />} />
             </Routes>
           </div>
         </div>

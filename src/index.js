@@ -5,6 +5,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { StrictMode } from "react";
 import { ContextProvider } from "./Context/ContextProvider";
+import { AuthContextProvider } from "./Context/AuthContext";
 
 import { reducers } from "./reducers";
 import "./index.css";
@@ -16,9 +17,11 @@ const root = createRoot(container);
 root.render(
   <Provider store={store}>
     <StrictMode>
-      <ContextProvider>
-        <App />
-      </ContextProvider>
+      <AuthContextProvider>
+        <ContextProvider>
+          <App />
+        </ContextProvider>
+      </AuthContextProvider>
     </StrictMode>
   </Provider>
 );

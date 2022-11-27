@@ -24,6 +24,7 @@ export const getViewDesign = (page) => axios.get(`${url}/getviewdesign?page=${pa
 export const getSingleDesign = (id) => axios.get(`${url}/getdesign/${id}`);
 export const getPrintstockBarcode = () => axios.get(`${url}/getproductstock`);
 export const Delproduct = (id) => axios.delete(`${url}/delproducts/${id}`);
+export const Deldesign = (id) => axios.delete(`${url}/deldesign/${id}`);
 export const getAddDesign = () => axios.get(`${url}/getadddesign`);
 export const getAddImport = () => axios.get(`${url}/getaddimport`);
 
@@ -36,6 +37,7 @@ export const addDesign = (newDesign) => axios.post(`${url}/adddesign`, newDesign
 export const addKhwantaProduct = (newdata) => axios.post(`${url}/addKhwantaProduct`, newdata);
 export const addSupplier = (data) => axios.post(`${url}/addsupplier`, data);
 export const addImport = (data) => axios.post(`${url}/addimport`, data);
+export const editDesignSize = (data) => axios.post(`${url}/editdesignsize`, data);
 
 //<====================================  =======================================>
 export const logUserIn = (data) => axios.post(`${url}/addlogin`, data);

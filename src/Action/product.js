@@ -15,6 +15,8 @@ import {
   GET_ADD_DESIGN,
   GETFABRICTYPE,
   GET_ADD_IMPORT,
+  DEL_DESIGN,
+  EDIT_DESIGN_SIZE,
 } from "../constants/actionTypes";
 
 import {
@@ -31,7 +33,10 @@ import {
   getAddImport,
   getSingleDesign,
   getSingleProduct,
+  Deldesign,
+  editDesignSize,
 } from "../Api";
+import { async } from "@firebase/util";
 
 export const GetDesignCode = (product) => async (dispatch) => {
   try {
@@ -116,8 +121,6 @@ export const GetProduct = (page) => async (dispatch) => {
   }
 };
 
-
-
 export const GetFabricType = () => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });
@@ -158,8 +161,6 @@ export const GetSingleDesign = (id) => async (dispatch) => {
   } catch (error) {}
 };
 
-
-
 export const DelProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });
@@ -167,4 +168,26 @@ export const DelProduct = (id) => async (dispatch) => {
     dispatch({ type: DEL_PRODUCT, payload: data });
     dispatch({ type: END_LOADING });
   } catch (error) {}
+};
+
+export const DelDesign = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+    const { data } = await Deldesign(id);
+    dispatch({ type: DEL_DESIGN, payload: data });
+    dispatch({ type: END_LOADING });
+  } catch (error) {}
+};
+
+export const EditDesignSize = (editdata) => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+    const { data } = await editDesignSize(editdata);
+
+    dispatch({ type: EDIT_DESIGN_SIZE, payload: data });
+    dispatch(GetSingleDesign(editdata[1]));
+    dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log(error.message);
+  }
 };

@@ -4,7 +4,7 @@ const Carousel = ({ data1, imgdetail, imgdesigndetail }) => {
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousel = useRef(null);
-  console.log(data1, imgdetail, imgdesigndetail);
+
   const movePrev = () => {
     if (currentIndex > 0) {
       setCurrentIndex((prevState) => prevState - 1);
@@ -110,7 +110,10 @@ const Carousel = ({ data1, imgdetail, imgdesigndetail }) => {
                   style={{ backgroundImage: `url(${resource?.product_detail_img_Url || ""})` }}
                   className="h-full w-full aspect-square block bg-origin-padding bg-center bg-cover bg-no-repeat z-0"
                 >
-                  <img src={resource?.product_detail_img_Url} className="w-full aspect-square hidden" />
+                  <img
+                    src={resource?.product_detail_img_Url}
+                    className="w-full aspect-square hidden"
+                  />
                 </a>
               </div>
             );

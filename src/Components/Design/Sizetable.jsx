@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 import { Table } from "flowbite-react";
 
-const Sizetable = ({ SizeRow, SizeHead }) => {
+const Sizetable = ({ SizeRow, SizeHead, EditSizeFunc }) => {
   // const Edittrigger = () => {
   //   setIsEdit(!IsEdit);
   // };
 
-
+  const editS = () => {
+    EditSizeFunc(true);
+  };
   return (
     <div className=" mt-5">
       <Table className="table-auto">
         <Table.Head>
-          <Table.HeadCell className=" text-base bg-white text-center">รายละเอียดไซส์</Table.HeadCell>
+          <Table.HeadCell className=" text-base bg-white text-center">
+            รายละเอียดไซส์
+          </Table.HeadCell>
           {SizeHead.map((e, i) => (
             <Table.HeadCell key={i} className=" text-base    bg-white text-center ">
               {e}
@@ -43,6 +47,7 @@ const Sizetable = ({ SizeRow, SizeHead }) => {
           X
         </a>
       )} */}
+  
     </div>
   );
 };

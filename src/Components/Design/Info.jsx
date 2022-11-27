@@ -4,9 +4,13 @@ const Info = ({ product }) => {
       <div className="intro-y box mt-5  ">
         <div className=" border-slate-200/60 dark:border-darkmode-400  rounded-md p-5">
           <div className="">
-            <div className="font-medium text-base flex items-center border-b  border-slate-200/60 dark:border-darkmode-400 pb-5">
-              ข้อมูลสินค้า
+            <div className="font-medium text-base flex items-center justify-between border-b  border-slate-200/60 dark:border-darkmode-400 pb-5">
+              <span>ข้อมูลสินค้า </span>
+              <button className="btn mr-5 bg-red-600  text-white w-full md:w-52">
+                แก้ไขข้อมูลสินค้า
+              </button>
             </div>
+
             <div className="mt-5 justify-center"></div>
             <div className="grid grid-cols-12 gap-5 text-base mt-10 lg:text-lg">
               <div className=" col-span-2 justify-items-end text-right">

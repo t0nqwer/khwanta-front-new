@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { useStateContext } from "../Context/ContextProvider";
-import useInlineStyle from "../hook/useInlineStyle";
 
 const Login = () => {
   const { currentColor } = useStateContext();
-  const [hover, setHover] = useState(false);
   const [focus2, setFocus2] = useState(false);
   const [focus, setFocus] = useState(false);
 
@@ -22,19 +20,13 @@ const Login = () => {
     <div className="p-5">
       <div className="relative  flex flex-col justify-center min-h-screen overflow-hidden">
         <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
-          <h1
-            className="text-3xl font-semibold text-center text-purple-700 underline"
-            style={{ color: currentColor }}
-          >
-            Sign in
+          <h1 className="text-3xl font-semibold text-center" style={{ color: currentColor }}>
+            เข้าสู่ระบบ
           </h1>
           <form className="mt-6">
             <div className="mb-2">
-              <label for="email" className=" text-primary block text-sm font-semibold ">
-                Email
-              </label>
+              <label className=" text-primary block text-sm font-semibold ">Username</label>
               <input
-                type="email"
                 className="input block w-full px-4 py-2 mt-2  bg-white border rounded-md focus:outline-none focus:ring focus:ring-opacity-40"
                 style={inputstyle}
                 onFocus={() => setFocus("focus", true)}
@@ -42,7 +34,7 @@ const Login = () => {
               />
             </div>
             <div className="mb-2">
-              <label for="password" className="block text-sm font-semibold text-gray-800">
+              <label htmlFor="password" className="block text-sm font-semibold text-gray-800">
                 Password
               </label>
               <input
@@ -54,7 +46,7 @@ const Login = () => {
               />
             </div>
             <a href="#" className="text-xs  hover:underline" style={{ color: currentColor }}>
-              Forget Password?
+              ลืมรหัสผ่าน ?
             </a>
             <div className="mt-6">
               <button
@@ -62,20 +54,16 @@ const Login = () => {
                 style={{ backgroundColor: currentColor }}
               >
                 {" "}
-                Login
+                เข้าสู่ระบบ
               </button>
             </div>
           </form>
 
           <p className="mt-8 text-xs font-light text-center text-gray-700">
             {" "}
-            Don't have an account?{" "}
-            <a
-              href="#"
-              className="font-medium text-purple-600 hover:underline"
-              style={{ color: currentColor }}
-            >
-              Sign up
+            ยังไม่มีบัญชีในระบบ{" "}
+            <a href="#" className="font-medium hover:underline" style={{ color: currentColor }}>
+              ลงทะเบียน
             </a>
           </p>
         </div>
