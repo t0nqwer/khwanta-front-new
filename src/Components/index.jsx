@@ -11,3 +11,5 @@ export { default as DataPrint } from "./DataPrint";
 export { default as Loading } from "./loading";
 export { default as DesignSingle } from "./Design/designSingle";
 export { default as Modal } from "./Modal";
+export { default as EditDetailData } from "./EditDetailData";
+export { default as Productsingle } from "./Productsingle";

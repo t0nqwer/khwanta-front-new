@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const url = "https://khwanta-back-zfn2h52c7a-as.a.run.app";
-const url = "http://localhost:8080";
+const url = "https://khwanta-back-zfn2h52c7a-as.a.run.app";
+// const url = "http://localhost:8080";
 export const createPost = (newPost) => axios.post(url, newPost);
 export const likePost = (id) => axios.patch(`${url}/${id}/likePost`);
 export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
@@ -38,6 +38,6 @@ export const addKhwantaProduct = (newdata) => axios.post(`${url}/addKhwantaProdu
 export const addSupplier = (data) => axios.post(`${url}/addsupplier`, data);
 export const addImport = (data) => axios.post(`${url}/addimport`, data);
 export const editDesignSize = (data) => axios.post(`${url}/editdesignsize`, data);
-
+export const editDesignDetail = (data) => axios.post(`${url}/editdesigndetail`, data);
 //<====================================  =======================================>
 export const logUserIn = (data) => axios.post(`${url}/addlogin`, data);

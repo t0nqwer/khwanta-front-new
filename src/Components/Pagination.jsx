@@ -11,7 +11,6 @@ const Pagination = ({ pagee, limit, Navito }) => {
   }
 
   const Nav = (e) => {
-    console.log(e);
     navigate(`${Navito}?page=${e.target.textContent}`);
   };
   const NavBF = (e) => {

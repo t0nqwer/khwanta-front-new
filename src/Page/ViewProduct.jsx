@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import { Pagination, ProductCard } from "../Components";
+import { Pagination, ProductCard, Loading } from "../Components";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { DelProduct, GetProduct } from "../Action/product";
+import { useStateContext } from "../Context/ContextProvider";
 
 const ViewProduct = () => {
-  const { Prodata2, page } = useSelector((state) => state.product);
+  const { Prodata2, page, isLoading } = useSelector((state) => state.product);
+  const { currentColor } = useStateContext();
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -13,12 +15,12 @@ const ViewProduct = () => {
   const qurey = useQuery();
   const dispatch = useDispatch();
   const pagee = qurey.get("page") || 1;
-
+  console.log(Prodata2, page);
   //<============================State============================>
   const [deleteConfirmationModal, setDeleteConfirmationModal] = useState(false);
   const [DelID, setDelID] = useState("");
 
-  const navito = "/product-cloth";
+  const navito = "/ViewProduct";
   //<============================Function============================>
   const DeleteConfirmation = (e) => {
     setDeleteConfirmationModal(true);
@@ -36,6 +38,20 @@ const ViewProduct = () => {
 
   return (
     <div>
+      {isLoading ? (
+        <div
+          className=" fixed w-full justify-center min-w-min left-0 top-0 items-center op  "
+          style={{ zIndex: "10000" }}
+        >
+          <div className=" w-screen relative h-screen items-center justify-center flex bg-orange-200 bg-opacity-50">
+            <div className="w-60">
+              <Loading iconColor={currentColor} />
+            </div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
       <div className=" ml-10">
         <h2 className=" text-lg font-medium mt-10">แบบเสื้อผ้า</h2>
         <div className="grid grid-cols-12 gap-6 mt-5">

@@ -2,18 +2,23 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import Info from "./Info";
-import Slider from "./Slider";
-import Sizetable from "./Sizetable";
-import { Size, EditDetailData } from "../../Components";
-import {
-  EditDesignDetail,
-  EditDesignSize,
-  GetAddDesign,
-  GetSingleDesign,
-} from "../../Action/product";
+import Info from "./Design/Info";
+import Slider from "./Design/Slider";
+import Sizetable from "./Design/Sizetable";
+import { Size, EditDetailData } from ".";
+import { EditDesignDetail, EditDesignSize, GetAddDesign, GetSingleDesign } from "../Action/product";
 
-const Product = ({ Data, Sizede, SizeHead, SizeRow, img, ProDetail, DeDetail, IsSize, id }) => {
+const Productsingle = ({
+  Data,
+  Sizede,
+  SizeHead,
+  SizeRow,
+  img,
+  ProDetail,
+  DeDetail,
+  IsSize,
+  id,
+}) => {
   const { SizeDe, DesignCode, category, pattern, brand, isLoading } = useSelector(
     (state) => state.designcode
   );
@@ -96,16 +101,9 @@ const Product = ({ Data, Sizede, SizeHead, SizeRow, img, ProDetail, DeDetail, Is
               <div className="">
                 <div className="font-medium text-base flex items-center justify-between border-b  border-slate-200/60 dark:border-darkmode-400 pb-5">
                   <span>ข้อมูลสินค้า </span>
-                  {/* <button
-                    className="btn mr-5 bg-red-600  text-white w-full md:w-52"
-                    onClick={() => {
-                      setIsEditData(!isEditData);
-                    }}
-                  >
-                    แก้ไขข้อมูลสินค้า
-                  </button> */}
+           
                   <div>
-                    {!isEditData ? (
+                    {/* {!isEditData ? (
                       <button
                         className="btn mr-5 bg-red-600  text-white w-full md:w-52"
                         onClick={() => {
@@ -137,7 +135,7 @@ const Product = ({ Data, Sizede, SizeHead, SizeRow, img, ProDetail, DeDetail, Is
                       </>
                     ) : (
                       ""
-                    )}
+                    )} */}
                   </div>
                 </div>
                 {isEditData ? (
@@ -155,46 +153,7 @@ const Product = ({ Data, Sizede, SizeHead, SizeRow, img, ProDetail, DeDetail, Is
             </div>
           </div>
 
-          {IsEditSize ? (
-            <div className="mt-5">
-              <Size OnSaveSize={SaveSize} ResetData={ResetData} />
-              <div className=" justify-end flex mr-5">
-                <button
-                  className="btn py-3 mt-3 mr-5 bg-green-600  text-white w-full md:w-52 hover:bg-green-500"
-                  onClick={submitEditSize}
-                >
-                  บันทึก
-                </button>
-                <button
-                  className="btn py-3 mt-3 mr-5 bg-red-600  text-white w-full md:w-52 hover:bg-red-500"
-                  onClick={() => {
-                    setIsEditSize(!IsEditSize);
-                  }}
-                >
-                  ยกเลิก
-                </button>
-              </div>
-            </div>
-          ) : (
-            ""
-          )}
-          {IsEditSize ? (
-            ""
-          ) : IsSize ? (
-            <div>
-              <Sizetable SizeHead={SizeHead} SizeRow={SizeRow} />
-              <div className=" justify-end mt-5 mb-7 flex w-full">
-                <button
-                  className="btn mr-5 bg-red-600   text-white w-full md:w-52"
-                  onClick={EditSizeFunc}
-                >
-                  แก้ไขไซส์สินค้า
-                </button>
-              </div>
-            </div>
-          ) : (
-            ""
-          )}
+          <Sizetable SizeHead={SizeHead} SizeRow={SizeRow} />
         </div>
       </div>
       <Slider
@@ -207,4 +166,4 @@ const Product = ({ Data, Sizede, SizeHead, SizeRow, img, ProDetail, DeDetail, Is
   );
 };
 
-export default Product;
+export default Productsingle;

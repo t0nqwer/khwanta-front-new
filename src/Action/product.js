@@ -17,6 +17,7 @@ import {
   GET_ADD_IMPORT,
   DEL_DESIGN,
   EDIT_DESIGN_SIZE,
+  EDIT_DESIGN_DETAIL,
 } from "../constants/actionTypes";
 
 import {
@@ -35,6 +36,7 @@ import {
   getSingleProduct,
   Deldesign,
   editDesignSize,
+  editDesignDetail,
 } from "../Api";
 import { async } from "@firebase/util";
 
@@ -112,6 +114,8 @@ export const GetviewDesign = (page) => async (dispatch) => {
 
 export const GetProduct = (page) => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING });
+
     const { data } = await getProduct(page);
 
     dispatch({ type: GETPRODUCT, payload: data });
@@ -186,6 +190,18 @@ export const EditDesignSize = (editdata) => async (dispatch) => {
 
     dispatch({ type: EDIT_DESIGN_SIZE, payload: data });
     dispatch(GetSingleDesign(editdata[1]));
+    dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+export const EditDesignDetail = (editdata) => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+    const { data } = await editDesignDetail(editdata);
+
+    dispatch({ type: EDIT_DESIGN_DETAIL, payload: data });
+
     dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error.message);

@@ -4,6 +4,7 @@ import {
   START_LOADING,
   END_LOADING,
   EDIT_DESIGN_SIZE,
+  EDIT_DESIGN_DETAIL,
 } from "../../constants/actionTypes";
 
 export default (
@@ -27,6 +28,9 @@ export default (
     case EDIT_DESIGN_SIZE:
       console.log(action.payload);
       return { ...singleproduct, Sta: action.payload };
+      case EDIT_DESIGN_DETAIL:
+        console.log(action.payload);
+        return { ...singleproduct, Sta: action.payload };
     default:
       return singleproduct;
   }

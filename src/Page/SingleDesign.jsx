@@ -1,5 +1,5 @@
 import React from "react";
-import { DesignSingle, Modal } from "../Components";
+import { DesignSingle, Modal, Loading } from "../Components";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -11,17 +11,17 @@ import { AiFillDelete } from "react-icons/ai";
 import { START_LOADING } from "../constants/actionTypes";
 const SingleDesign = () => {
   const { currentColor } = useStateContext();
-  const { Data, Sizede, Sta } = useSelector((state) => state.singleproduct);
+  const { Data, Sizede, Sta, isLoading } = useSelector((state) => state.singleproduct);
   const dispatch = useDispatch();
   const { id } = useParams();
   useEffect(() => {
     dispatch(GetSingleDesign(id));
   }, [id]);
   useEffect(() => {
-    console.log(Sta);
+
     dispatch(GetSingleDesign(id));
   }, [Sta]);
-  console.log(Sizede);
+
   const navigate = useNavigate();
   const [Sizedata, setSizedata] = useState([]);
   const [SizeHead, setSizeHead] = useState([1, 2]);
@@ -64,56 +64,73 @@ const SingleDesign = () => {
     setModalOpen(false);
     navigate(`/ViewDesign`);
   };
+
   return (
-    <div className="p-5">
-      <DesignSingle
-        Data={Data}
-        Sizede={Sizede}
-        SizeHead={SizeHead}
-        SizeRow={SizeRow}
-        img={img}
-        ProDetail={ProDetail}
-        DeDetail={DeDetail}
-        IsSize={true}
-        id={id}
-      />
-      <div className="w-full flex justify-end ">
-        <button
-          type="button"
-          onClick={Submit}
-          style={{ backgroundColor: currentColor }}
-          className="btn py-3 mt-3 mb-10 mr-5  text-white w-full md:w-52"
+    <>
+      {isLoading ? (
+        <div
+          className=" fixed w-full justify-center min-w-min left-0 top-0 items-center op  "
+          style={{ zIndex: "10000" }}
         >
-          กลับหน้ารวมดีไซน์
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setModalOpen(true);
-          }}
-          className="btn py-3 mt-3 mb-10 mr-5 bg-red-600  text-white w-full md:w-52"
-        >
-          <AiFillDelete className="mr-2" />
-          ลบดีไซน์นี้
-        </button>
-      </div>
-      {modalOpen && (
-        <Modal
-          title={`คุณแน่ใจมั้ยว่าต้องการลบดีไซน์นี้  ?`}
-          body={
-            <>
-              <span className="text-center">
-                1. หลังจากลบสินค้าแล้วจะไม่สามารถกู้ข้อมูลกลับมาใหม่ได้
-                <br /> 2. รหัสบาร์โค้ด,สต๊อคและสินค้าทั้งหมดที่ใช้ดีไซน์จะถูกลบออกจากระบบ
-              </span>
-            </>
-          }
-          setOpenModal={setModalOpen}
-          DelButton="ลบ"
-          customFunc={DelProductFunc}
-        />
+          <div className=" w-screen relative h-screen items-center justify-center flex bg-orange-200 bg-opacity-50">
+            <div className="w-60">
+              <Loading iconColor={currentColor} />
+            </div>
+          </div>
+        </div>
+      ) : (
+        ""
       )}
-    </div>
+      <div className="p-5">
+        <DesignSingle
+          Data={Data}
+          Sizede={Sizede}
+          SizeHead={SizeHead}
+          SizeRow={SizeRow}
+          img={img}
+          ProDetail={ProDetail}
+          DeDetail={DeDetail}
+          IsSize={true}
+          id={id}
+        />
+        <div className="w-full flex justify-end ">
+          <button
+            type="button"
+            onClick={Submit}
+            style={{ backgroundColor: currentColor }}
+            className="btn py-3 mt-3 mb-10 mr-5  text-white w-full md:w-52"
+          >
+            กลับหน้ารวมดีไซน์
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setModalOpen(true);
+            }}
+            className="btn py-3 mt-3 mb-10 mr-5 bg-red-600  text-white w-full md:w-52"
+          >
+            <AiFillDelete className="mr-2" />
+            ลบดีไซน์นี้
+          </button>
+        </div>
+        {modalOpen && (
+          <Modal
+            title={`คุณแน่ใจมั้ยว่าต้องการลบดีไซน์นี้  ?`}
+            body={
+              <>
+                <span className="text-center">
+                  1. หลังจากลบสินค้าแล้วจะไม่สามารถกู้ข้อมูลกลับมาใหม่ได้
+                  <br /> 2. รหัสบาร์โค้ด,สต๊อคและสินค้าทั้งหมดที่ใช้ดีไซน์จะถูกลบออกจากระบบ
+                </span>
+              </>
+            }
+            setOpenModal={setModalOpen}
+            DelButton="ลบ"
+            customFunc={DelProductFunc}
+          />
+        )}
+      </div>
+    </>
   );
 };
 

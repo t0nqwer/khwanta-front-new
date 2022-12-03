@@ -1,5 +1,5 @@
 import React from "react";
-import { DesignSingle, Loading, Modal } from "../Components";
+import { DesignSingle, Loading, Modal,Productsingle } from "../Components";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -104,7 +104,7 @@ const SingleProduct = () => {
       )}
       <div className="p-5">
         {Data?.product_category?.product_category_type_id === 1 ? (
-          <DesignSingle
+          <Productsingle
             Data={{
               head1: "รหัส :",
               info1: Data?.code,
@@ -127,7 +127,7 @@ const SingleProduct = () => {
             IsSize={true}
           />
         ) : Data?.product_category?.product_category_type_id === 2 ? (
-          <DesignSingle
+          <Productsingle
             Data={{
               head1: "Barcode :",
               info1: Data?.product_stock_info[0]?.product_stock_barcode_13,
@@ -146,7 +146,7 @@ const SingleProduct = () => {
             DeDetail={DeDetail}
           />
         ) : Data?.product_category?.product_category_type_id === 3 ? (
-          <DesignSingle
+          <Productsingle
             Data={{
               head1: "Barcode :",
               info1: Data?.product_stock_info[0]?.product_stock_barcode_13,
