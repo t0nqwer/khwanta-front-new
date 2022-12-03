@@ -25,8 +25,8 @@ const Productsingle = ({
   const dispatch = useDispatch();
   const [IsEditSize, setIsEditSize] = useState(false);
   const [GetSize, setGetSize] = useState([]);
-  const [ResetData, setResetData] = useState(true);
   const [isEditData, setIsEditData] = useState(false);
+  const [ImageFrontSelected, setImageFrontSelected] = useState(false);
   const [Product, setProduct] = useState({
     code: "",
     title: "",
@@ -37,6 +37,38 @@ const Productsingle = ({
     brand: "",
     brandname: "",
   });
+  const [Imgfront, setImgfront] = useState("");
+  const [Imgback, setImgback] = useState("");
+  useEffect(() => {
+    setImgfront(img[0]?.imageUrl);
+    setImgback(img[1]?.imageUrl);
+  }, [img]);
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState();
+
+  // create a preview as a side effect, whenever selected file is changed
+  useEffect(() => {
+    if (!selectedFile) {
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setImgfront(objectUrl);
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
+  const onSelectFile = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined);
+      return;
+    }
+
+    // I've kept this example simple by using the first image instead of multiple
+    setSelectedFile(e.target.files[0]);
+    setImageFrontSelected(true);
+  };
   const ProductInfoHandler = (data) => {
     setProduct({
       ...Product,
@@ -51,30 +83,18 @@ const Productsingle = ({
       brandname: data.brandname,
     });
   };
+  const cancelselectFrontImg = () => {
+    setImageFrontSelected(false);
+    setSelectedFile();
+    setImgfront(img[0]?.imageUrl);
+    console.log(img[0]?.imageUrl);
+  };
   useEffect(() => {
-    dispatch(GetAddDesign());
-  }, [dispatch]);
-  const EditSizeFunc = (e) => {
-    setIsEditSize(!IsEditSize);
-  };
-  const EditDataFunc = (e) => {
-    setIsEditData(!isEditData);
-    dispatch(EditDesignDetail(Product));
-  };
-
-  const submitEditSize = () => {
-    dispatch(EditDesignSize([GetSize, id]));
-    setGetSize([]);
-    setIsEditSize(!IsEditSize);
-  };
-
-  const SaveSize = (e) => {
-    const render = e.map((e) => {
-      const dename = SizeDe.filter((x) => x.size_de_id === e.id);
-      return { name: e.name, id: e.id, data: e.data, dename: dename[0].size_de_name };
-    });
-
-    setGetSize(render);
+    console.log(Imgfront);
+  }, [Imgfront]);
+  const editFrontImgFnc = (e) => {
+    console.log(URL.createObjectURL(e.target.files));
+    // setImgfront(URL.createObjectURL(e.target.value));
   };
   return (
     <div className="grid grid-cols-8 gap-4 mt-5">
@@ -83,14 +103,33 @@ const Productsingle = ({
           <div className="grid grid-cols-2 gap-4">
             <div className="  justify-around relative flex flex-col items-center ">
               <span className="my-5 text-lg font-bold">รูปด้านหน้า</span>
-              <img src={img[0]?.imageUrl} className=" object-contain rounded-md h-128 " />
-              <button className="btn py-3 mt-3 mr-5 bg-red-600  text-white w-full md:w-52">
-                แก้ไขรูป
-              </button>
+              <img src={Imgfront} className=" object-contain rounded-md h-128 " />
+              {!ImageFrontSelected && (
+                <label
+                  for="file-upload"
+                  className=" w-full text-center text-white bg-red-400 p-3 mt-2 rounded-md"
+                >
+                  แก้ไขรูป
+                </label>
+              )}
+              <input id="file-upload" onChange={onSelectFile} className=" hidden" type="file" />
+              {ImageFrontSelected && (
+                <div>
+                  <button className="btn py-3 mt-3 mr-5 bg-green-600  text-white w-full ">
+                    บันทึกรูป
+                  </button>
+                  <button
+                    onClick={cancelselectFrontImg}
+                    className="btn py-3 mt-3 mr-5 bg-red-600  text-white w-full "
+                  >
+                    ยกเลิก
+                  </button>
+                </div>
+              )}
             </div>
             <div className="  justify-around relative flex flex-col items-center ">
               <span className="my-5 text-lg font-bold">รูปด้านหลัง</span>
-              <img src={img[1]?.imageUrl} className=" object-contain rounded-md h-128 " />
+              <img src={Imgback} className=" object-contain rounded-md h-128 " />
               <button className="btn py-3 mt-3 mr-5 bg-red-600  text-white w-full md:w-52">
                 แก้ไขรูป
               </button>
@@ -101,42 +140,8 @@ const Productsingle = ({
               <div className="">
                 <div className="font-medium text-base flex items-center justify-between border-b  border-slate-200/60 dark:border-darkmode-400 pb-5">
                   <span>ข้อมูลสินค้า </span>
-           
-                  <div>
-                    {/* {!isEditData ? (
-                      <button
-                        className="btn mr-5 bg-red-600  text-white w-full md:w-52"
-                        onClick={() => {
-                          setIsEditData(!isEditData);
-                          dispatch(GetAddDesign());
-                        }}
-                      >
-                        แก้ไขข้อมูลสินค้า
-                      </button>
-                    ) : (
-                      ""
-                    )}
-                    {isEditData ? (
-                      <>
-                        <button
-                          className="btn mr-5 bg-green-600  text-white w-full md:w-52"
-                          onClick={EditDataFunc}
-                        >
-                          บันทึกข้อมูลสินค้า
-                        </button>
-                        <button
-                          className="btn mr-5 bg-red-600  text-white w-full md:w-52"
-                          onClick={() => {
-                            setIsEditData(!isEditData);
-                          }}
-                        >
-                          ยกเลิก
-                        </button>
-                      </>
-                    ) : (
-                      ""
-                    )} */}
-                  </div>
+
+                  <div></div>
                 </div>
                 {isEditData ? (
                   <EditDetailData
